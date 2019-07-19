@@ -12,9 +12,7 @@ import kotlinx.android.synthetic.main.header.*
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 
-/**
- * 黑马程序员
- */
+
 class ConversationFragment : BaseFragment() {
 
     val conversations = mutableListOf<EMConversation>()

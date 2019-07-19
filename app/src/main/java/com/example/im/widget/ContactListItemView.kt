@@ -8,9 +8,7 @@ import com.example.im.R
 import com.example.im.data.ContactListItem
 import kotlinx.android.synthetic.main.view_contact_item.view.*
 
-/**
- * 黑马程序员
- */
+
 class ContactListItemView(context: Context?, attrs: AttributeSet?=null) : RelativeLayout(context, attrs) {
 
     init {

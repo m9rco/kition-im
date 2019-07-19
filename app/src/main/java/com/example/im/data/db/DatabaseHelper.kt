@@ -5,9 +5,6 @@ import android.database.sqlite.SQLiteDatabase
 import com.example.im.app.IMApplication
 import org.jetbrains.anko.db.*
 
-/**
- * 黑马程序员
- */
 class DatabaseHelper(ctx: Context = IMApplication.instance)
     : ManagedSQLiteOpenHelper(ctx, NAME, null, VERSION) {
 

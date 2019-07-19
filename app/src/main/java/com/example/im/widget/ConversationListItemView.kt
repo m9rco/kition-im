@@ -12,9 +12,7 @@ import com.example.im.R
 import kotlinx.android.synthetic.main.view_conversation_item.view.*
 import java.util.*
 
-/**
- * 黑马程序员
- */
+
 class ConversationListItemView(context: Context?, attrs: AttributeSet? = null) : RelativeLayout(context, attrs) {
 
     init {

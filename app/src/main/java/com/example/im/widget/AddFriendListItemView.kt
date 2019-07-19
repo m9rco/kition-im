@@ -12,9 +12,7 @@ import kotlinx.android.synthetic.main.view_add_friend_item.view.*
 import org.jetbrains.anko.runOnUiThread
 import org.jetbrains.anko.toast
 
-/**
- * 黑马程序员
- */
+
 class AddFriendListItemView(context: Context?, attrs: AttributeSet? = null) : RelativeLayout(context, attrs) {
 
     init {

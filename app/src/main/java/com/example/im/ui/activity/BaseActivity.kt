@@ -2,6 +2,7 @@ package com.example.im.ui.activity
 
 import android.app.ProgressDialog
 import android.content.Context
+import android.os.Bundle
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 
@@ -15,10 +16,12 @@ abstract class BaseActivity : AppCompatActivity() {
         getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
     }
 
-    //    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        init()
-//    }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(getLayoutResId())
+        init()
+    }
+
     open fun init() {
         //初始化一些公共的功能，比如摇一摇，子类也可以覆写该方法，完成自己的初始化
 //        if (!hasReadPhoneStatePermission()) {

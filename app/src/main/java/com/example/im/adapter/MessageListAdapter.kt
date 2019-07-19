@@ -9,9 +9,6 @@ import com.hyphenate.util.DateUtils
 import com.example.im.widget.ReceiveMessageItemView
 import com.example.im.widget.SendMessageItemView
 
-/**
- * 黑马程序员
- */
 class MessageListAdapter(val context: Context, val messages: List<EMMessage>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 

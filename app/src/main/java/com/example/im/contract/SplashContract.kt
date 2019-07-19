@@ -1,11 +1,8 @@
 package com.example.im.contract
 
-/**
- * 黑马程序员
- */
 interface SplashContract {
 
-    interface Presenter: BasePresenter {
+    interface Presenter : BasePresenter {
         fun checkLoginStatus()//检查登陆状态
     }
 

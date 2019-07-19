@@ -5,9 +5,6 @@ import org.jetbrains.anko.db.MapRowParser
 import org.jetbrains.anko.db.insert
 import org.jetbrains.anko.db.select
 
-/**
- * 黑马程序员
- */
 class IMDatabase{
 
     companion object {

@@ -7,9 +7,7 @@ import com.example.im.contract.ChatContract
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 
-/**
- * 黑马程序员
- */
+
 class ChatPresenter(val view: ChatContract.View) : ChatContract.Presenter{
 
     companion object {

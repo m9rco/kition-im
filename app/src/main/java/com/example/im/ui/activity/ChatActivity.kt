@@ -16,9 +16,6 @@ import kotlinx.android.synthetic.main.activity_chat.*
 import kotlinx.android.synthetic.main.header.*
 import org.jetbrains.anko.toast
 
-/**
- * 黑马程序员
- */
 class ChatActivity : BaseActivity(), ChatContract.View {
 
     override fun getLayoutResId(): Int = R.layout.activity_chat

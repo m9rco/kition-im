@@ -19,7 +19,7 @@ class LoginActivity : BaseActivity(), LoginContract.View {
     override fun init() {
         super.init()
 
-        println("hello world")
+        println("this is here")
         println(newUser)
         println("hello world")
 

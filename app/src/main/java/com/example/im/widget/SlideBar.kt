@@ -10,9 +10,6 @@ import android.view.View
 import com.example.im.R
 import org.jetbrains.anko.sp
 
-/**
- * 黑马程序员
- */
 class SlideBar(context: Context?, attrs: AttributeSet? = null) : View(context, attrs) {
 
     var sectionHeight = 0f;

@@ -23,8 +23,7 @@ class SplashActivity : BaseActivity(), SplashContract.View {
         presenter.checkLoginStatus()
     }
 
-    override fun getLayoutResId(): Int =
-        R.layout.activity_splash
+    override fun getLayoutResId(): Int = R.layout.activity_splash
 
     //延时2s, 跳转到登录界面
     override fun onNotLoggedIn() {

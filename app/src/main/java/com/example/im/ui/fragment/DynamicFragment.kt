@@ -11,10 +11,7 @@ import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 
 
-/**
- * 黑马程序员
- */
-class DynamicFragment: BaseFragment() {
+class DynamicFragment : BaseFragment() {
 
     override fun getLayoutResId(): Int = R.layout.fragment_dynamic
 
@@ -25,7 +22,7 @@ class DynamicFragment: BaseFragment() {
         val logoutString = String.format(getString(R.string.logout), EMClient.getInstance().currentUser)
         logout.text = logoutString
 
-        logout.setOnClickListener{logout()}
+        logout.setOnClickListener { logout() }
     }
 
     fun logout() {

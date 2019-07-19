@@ -10,9 +10,6 @@ import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 
 
-/**
- * 黑马程序员
- */
 class ContactPresenter(val view: ContactContract.View): ContactContract.Presenter{
 
     val contactListItems = mutableListOf<ContactListItem>()

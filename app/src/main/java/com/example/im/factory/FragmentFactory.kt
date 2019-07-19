@@ -6,9 +6,6 @@ import com.example.im.ui.fragment.ContactFragment
 import com.example.im.ui.fragment.ConversationFragment
 import com.example.im.ui.fragment.DynamicFragment
 
-/**
- * 黑马程序员
- */
 class FragmentFactory private constructor() {
 
     val conversation by lazy {

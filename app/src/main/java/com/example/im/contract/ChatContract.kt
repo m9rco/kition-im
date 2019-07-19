@@ -2,9 +2,6 @@ package com.example.im.contract
 
 import com.hyphenate.chat.EMMessage
 
-/**
- * 黑马程序员
- */
 interface ChatContract{
 
     interface Presenter: BasePresenter{
