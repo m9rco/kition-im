@@ -18,11 +18,6 @@ class LoginActivity : BaseActivity(), LoginContract.View {
 
     override fun init() {
         super.init()
-
-        println("this is here")
-        println(newUser)
-        println("hello world")
-
         newUser.setOnClickListener { startActivity<RegisterActivity>() }
         login.setOnClickListener { login() }
         password.setOnEditorActionListener { p0, p1, p2 ->

@@ -1,14 +1,11 @@
 package com.example.im.app
 
-import android.Manifest
 import android.app.*
 import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
 import android.media.AudioManager
 import android.media.SoundPool
-import androidx.core.app.ActivityCompat
 import cn.bmob.v3.Bmob
 import com.example.im.BuildConfig.DEBUG
 import com.hyphenate.chat.EMClient
@@ -18,8 +15,14 @@ import com.hyphenate.chat.EMTextMessageBody
 import com.example.im.R
 import com.example.im.adapter.EMMessageListenerAdapter
 import com.example.im.ui.activity.ChatActivity
+import android.hardware.Sensor
+import android.hardware.SensorEvent
+import android.hardware.SensorEventListener
+import android.hardware.SensorManager
 
 class IMApplication : Application() {
+
+    private val supportGyroscope = setOf("BMI160", "BMI120")
 
     companion object {
         lateinit var instance: IMApplication
@@ -81,8 +84,74 @@ class IMApplication : Application() {
         EMClient.getInstance().init(applicationContext, EMOptions())
         //在做打包混淆时，关闭debug模式，避免消耗不必要的资源
         EMClient.getInstance().setDebugMode(DEBUG)
-        Bmob.initialize(applicationContext, "480728efee030cac339cae26c9a3f2b1")
         EMClient.getInstance().chatManager().addMessageListener(messageListener)
+
+        Bmob.initialize(applicationContext, "480728efee030cac339cae26c9a3f2b1")
+
+        initGyroscope()
+        initAccelerometer()
+    }
+
+    fun supportGyroscope(): Boolean {
+        val sManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
+        val sensor = sManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE)  //Sensor type
+        return when (sensor.name.split(" ")[0]) {
+            in supportGyroscope -> true
+            else -> false
+        }
+    }
+
+    private fun initGyroscope() {
+        val sManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
+        val sensor = sManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE)  //Sensor type
+        val mainContext = sensor.name.split(" ")[0]
+//        gyroscopeInfo.text = "${sensor.name}"
+
+//        when (mainContext) {
+//            in supportGyroscope -> fullscreen_content.text = mainContext
+//            else -> fullscreen_content.text = mainContext
+//        }
+
+//        fullscreen_content.text = mainContext
+        sManager.registerListener(object : SensorEventListener {
+            override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
+
+            }
+
+            override fun onSensorChanged(event: SensorEvent?) {
+//                var values: FloatArray = event!!.values
+//                gyroscopeX.text = "X: " + values[0].toString()
+//                gyroscopeY.text = "Y: " + values[1].toString()
+//                gyroscopeZ.text = "Z: " + values[2].toString()
+
+            }
+        }, sensor, SensorManager.SENSOR_DELAY_NORMAL)
+    }
+
+
+    private fun initAccelerometer() {
+
+        var sManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
+        var sensor = sManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
+
+//        accelerometerInfo.text = "${sensor.name} "
+
+        sManager.registerListener(object : SensorEventListener {
+            override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
+
+            }
+
+            override fun onSensorChanged(event: SensorEvent?) {
+                var values: FloatArray = event!!.values
+//                accelerometerX.text = "X: " + values[0].toString()
+//                accelerometerY.text = "Y: " + values[1].toString()
+//                accelerometerZ.text = "Z: " + values[2].toString()
+            }
+
+
+        }, sensor, SensorManager.SENSOR_DELAY_NORMAL)
+
+
     }
 
     private fun isForeground(): Boolean {

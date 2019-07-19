@@ -7,7 +7,8 @@ interface SplashContract {
     }
 
     interface View {
-        fun onNotLoggedIn()//没有登陆的ui处理
-        fun onLoggedIn() //已经登陆的ui的处理
+        fun onNotLoggedIn() //没有登陆的ui处理
+        fun onLoggedIn()     //已经登陆的ui的处理
+        fun onNotSupportIn() // 不支持设备
     }
 }

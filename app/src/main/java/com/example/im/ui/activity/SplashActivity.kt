@@ -11,7 +11,7 @@ class SplashActivity : BaseActivity(), SplashContract.View {
     val presenter = SplashPresenter(this)
 
     companion object {
-        val DELAY = 2000L
+        val DELAY = 1000L
     }
 
     val handler by lazy {
@@ -25,7 +25,7 @@ class SplashActivity : BaseActivity(), SplashContract.View {
 
     override fun getLayoutResId(): Int = R.layout.activity_splash
 
-    //延时2s, 跳转到登录界面
+    //延时2s, 跳转到设备不支持
     override fun onNotLoggedIn() {
         handler.postDelayed({
             startActivity<LoginActivity>()
@@ -37,5 +37,13 @@ class SplashActivity : BaseActivity(), SplashContract.View {
     override fun onLoggedIn() {
         startActivity<MainActivity>()
         finish()
+    }
+
+    //延时1s, 跳转到设备不支持
+    override fun onNotSupportIn() {
+        handler.postDelayed({
+            startActivity<NotSupportActivity>()
+            finish()
+        }, DELAY)
     }
 }

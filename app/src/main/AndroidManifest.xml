@@ -26,7 +26,9 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
-            android:name=".app.IMApplication">
+            android:usesCleartextTraffic="true"
+            android:name=".app.IMApplication" tools:ignore="GoogleAppIndexingWarning">
+        <uses-library android:name="org.apache.http.legacy" android:required="false"/>
         <activity android:name=".ui.activity.MainActivity">
 
         </activity>
@@ -64,6 +66,11 @@
                 <action android:name="android.intent.action.USER_PRESENT"/>
             </intent-filter>
         </receiver>
+
+        <provider
+                android:name="cn.bmob.v3.util.BmobContentProvider"
+                android:authorities="com.example.im.BmobContentProvider">
+        </provider>
     </application>
 
 </manifest>

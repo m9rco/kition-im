@@ -50,18 +50,17 @@ class RegisterPresenter(val view: RegisterContract.View) : RegisterContract.Pres
     }
 
     private fun registerEaseMob(userName: String, password: String) {
+        println("-=============")
         doAsync {
             try {
                 //注册失败会抛出HyphenateException
-                EMClient.getInstance().createAccount(userName, password);//同步方法
+                EMClient.getInstance().createAccount(userName, password)
                 //注册成功
                 uiThread { view.onRegisterSuccess() }
             } catch (e: HyphenateException) {
                 //注册失败
                 uiThread { view.onRegisterFailed() }
             }
-
         }
-
     }
 }
