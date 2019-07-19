@@ -6,9 +6,6 @@ import com.example.im.contract.LoginContract
 import com.example.im.extentions.isValidPassword
 import com.example.im.extentions.isValidUserName
 
-/**
- * 黑马程序员
- */
 class LoginPresenter(val view: LoginContract.View): LoginContract.Presenter {
 
     override fun login(userName: String, password: String) {
