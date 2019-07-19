@@ -4,6 +4,7 @@ import android.Manifest
 import android.app.ProgressDialog
 import android.content.Context
 import android.content.pm.PackageManager
+import android.os.Bundle
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -20,11 +21,16 @@ abstract class BaseActivity : AppCompatActivity(), ActivityCompat.OnRequestPermi
         getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        init()
+    }
+
     open fun init() {
         //初始化一些公共的功能，比如摇一摇，子类也可以覆写该方法，完成自己的初始化
-        if (!hasReadPhoneStatePermission()) {
-            applyReadPhoneStatePermissino()
-        }
+//        if (!hasReadPhoneStatePermission()) {
+//            applyReadPhoneStatePermissino()
+//        }
     }
 
     private fun hasReadPhoneStatePermission(): Boolean {
@@ -50,11 +56,11 @@ abstract class BaseActivity : AppCompatActivity(), ActivityCompat.OnRequestPermi
     }
 
     fun hideSoftKeyboard() {
-        inputMethodManager.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
+        inputMethodManager.hideSoftInputFromWindow(currentFocus!!.windowToken, 0)
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-//        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this);
+        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this)
     }
 }

@@ -12,17 +12,14 @@ import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 
 
-/**
- * 黑马程序员
- */
-class RegisterPresenter(val view: RegisterContract.View): RegisterContract.Presenter {
+class RegisterPresenter(val view: RegisterContract.View) : RegisterContract.Presenter {
 
     override fun register(userName: String, password: String, confirmPassword: String) {
-        if(userName.isValidUserName()){
+        if (userName.isValidUserName()) {
             //检查密码
-            if(password.isValidPassword()){
+            if (password.isValidPassword()) {
                 //检查确认密码
-                if(password.equals(confirmPassword)){
+                if (password.equals(confirmPassword)) {
                     //密码和确认密码一致
                     view.onStartRegister()
                     //开始注册
@@ -36,8 +33,8 @@ class RegisterPresenter(val view: RegisterContract.View): RegisterContract.Prese
         val bu = BmobUser()
         bu.username = userName
         bu.setPassword(password)
-       //注意：不能用save方法进行注册
-        bu.signUp<BmobUser>(object : SaveListener<BmobUser>() {
+        //注意：不能用save方法进行注册
+        bu.signUp(object : SaveListener<BmobUser>() {
             override fun done(s: BmobUser?, e: BmobException?) {
                 if (e == null) {
                     //注册成功
@@ -45,7 +42,7 @@ class RegisterPresenter(val view: RegisterContract.View): RegisterContract.Prese
                     registerEaseMob(userName, password)
                 } else {
                     //注册失败
-                    if(e.errorCode == 202) view.onUserExist()
+                    if (e.errorCode == 202) view.onUserExist()
                     else view.onRegisterFailed()
                 }
             }

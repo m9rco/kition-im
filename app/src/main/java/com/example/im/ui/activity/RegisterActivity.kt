@@ -6,24 +6,21 @@ import com.example.im.presenter.RegisterPresenter
 import kotlinx.android.synthetic.main.activity_register.*
 import org.jetbrains.anko.toast
 
-/**
- * 黑马程序员
- */
-class RegisterActivity: BaseActivity(), RegisterContract.View{
+
+class RegisterActivity : BaseActivity(), RegisterContract.View {
 
     val presenter = RegisterPresenter(this)
 
     override fun init() {
         super.init()
-        register.setOnClickListener{register()}
+        register.setOnClickListener { register() }
         confirmPassword.setOnEditorActionListener { p0, p1, p2 ->
             register()
             true
         }
     }
 
-    fun register(){
-        //隐藏软键盘
+    private fun register() {
         hideSoftKeyboard()
         val userNameString = userName.text.trim().toString()
         val passwordString = password.text.trim().toString()

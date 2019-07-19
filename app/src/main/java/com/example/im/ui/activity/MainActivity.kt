@@ -13,7 +13,7 @@ import org.jetbrains.anko.startActivity
 class MainActivity : BaseActivity() {
     override fun getLayoutResId(): Int = R.layout.activity_main
 
-    val messageListener = object : EMMessageListenerAdapter() {
+    private val messageListener = object : EMMessageListenerAdapter() {
         override fun onMessageReceived(p0: MutableList<EMMessage>?) {
             runOnUiThread { updateBottomBarUnReadCount() }
         }
@@ -21,7 +21,6 @@ class MainActivity : BaseActivity() {
 
     override fun init() {
         super.init()
-        println("ccccccccccc")
         bottomBar.setOnTabSelectListener { tabId ->
             val beginTransaction = supportFragmentManager.beginTransaction()
             FragmentFactory.instance.getFragment(tabId)?.let { beginTransaction.replace(R.id.fragment_frame, it) }

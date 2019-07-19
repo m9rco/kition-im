@@ -6,10 +6,7 @@ import com.example.im.contract.SplashContract
 import com.example.im.presenter.SplashPresenter
 import org.jetbrains.anko.startActivity
 
-/**
- * 黑马程序员
- */
-class SplashActivity : BaseActivity(), SplashContract.View{
+class SplashActivity : BaseActivity(), SplashContract.View {
 
     val presenter = SplashPresenter(this)
 

@@ -10,17 +10,14 @@ import kotlinx.android.synthetic.main.activity_login.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 
-/**
- * 黑马程序员
- */
-class LoginActivity: BaseActivity(), LoginContract.View{
+class LoginActivity : BaseActivity(), LoginContract.View {
 
     val presenter = LoginPresenter(this)
 
     override fun init() {
         super.init()
-        newUser.setOnClickListener{startActivity<RegisterActivity>()}
-        login.setOnClickListener{login()}
+        newUser.setOnClickListener { startActivity<RegisterActivity>() }
+        login.setOnClickListener { login() }
         password.setOnEditorActionListener { p0, p1, p2 ->
             login()
             true
@@ -30,12 +27,11 @@ class LoginActivity: BaseActivity(), LoginContract.View{
     private fun login() {
         //隐藏软键盘
         hideSoftKeyboard()
-        if(hasWriteExternalStoragePermission()) {
+        if (hasWriteExternalStoragePermission()) {
             val userNameString = userName.text.trim().toString()
             val passwordString = password.text.trim().toString()
             presenter.login(userNameString, passwordString)
         } else applyWriteExteranlStoragePermissino()
-
     }
 
     private fun applyWriteExteranlStoragePermissino() {
